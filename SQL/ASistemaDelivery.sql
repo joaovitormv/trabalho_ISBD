@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS SistemaDelivery;
+
+#LETRA A - CRIAÇÃO DO BANCO DE DADOS
+
 CREATE SCHEMA IF NOT EXISTS SistemaDelivery DEFAULT CHARACTER SET utf8;
 USE SistemaDelivery;
 
@@ -10,7 +14,7 @@ CREATE TABLE IF NOT EXISTS Cliente (
 	cidade		VARCHAR(30)  	NOT NULL,
 	estado		CHAR(2)		NOT NULL,
 	cep		CHAR(8)		NOT NULL,
-	numero	INT UNSIGNED 	NOT NULL,
+	numero		INT UNSIGNED 	NOT NULL,
 	bairro		VARCHAR(30)  	NULL,
 	complemento	VARCHAR(20)  	NULL,
 	PRIMARY KEY (idCliente),
@@ -20,7 +24,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS Entregador (
 	idEntregador		INT			NOT NULL	AUTO_INCREMENT,
 	cpfEntregador		CHAR(11)		NOT NULL,
-	foneEntregador	CHAR(11)		NOT NULL,
+	foneEntregador		CHAR(11)		NOT NULL,
 	nomeEntregador	VARCHAR(80) 	NOT NULL,
 	tipoVeiculo		CHAR(1)		NOT NULL,
 	PRIMARY KEY (idEntregador),
@@ -30,15 +34,15 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Restaurante (
 	idRestaurante		INT			NOT NULL	AUTO_INCREMENT,
-	cnpjRestaurante	CHAR(14)		NOT NULL,
+	cnpjRestaurante		CHAR(14)		NOT NULL,
 	nomeRestaurante	VARCHAR(40)   	NOT NULL,
 	logradouro		VARCHAR(40)   	NOT NULL,
 	cidade			VARCHAR(30)   	NOT NULL,
 	estado			CHAR(2)		NOT NULL,
 	cep			CHAR(8)		NOT NULL,
-	numero		INT UNSIGNED  	NOT NULL,
+	numero			INT UNSIGNED  	NOT NULL,
 	bairro			VARCHAR(30)	NULL,
-	complemento		VARCHAR(20)	NULL,
+	complemento VARCHAR(20)	NULL,
 	PRIMARY KEY (idRestaurante),
 	UNIQUE INDEX cnpjRestaurante_UNIQUE (cnpjRestaurante ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -95,8 +99,8 @@ ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Cupom (
 	idCupom	INT			  	NOT NULL  AUTO_INCREMENT,
-	nomeCupom	VARCHAR(30)		NOT NULL,
-	valorDesconto DECIMAL(5,2) UNSIGNED 	NOT NULL,
+	nomeCupom	VARCHAR(30)			NOT NULL,
+	valorDesconto 	DECIMAL(5,2) UNSIGNED 	NOT NULL,
 	dataCriacao	DATE				NOT NULL,
 	dataValidade	DATE				NOT NULL,
 	PRIMARY KEY (idCupom))
@@ -133,8 +137,8 @@ CREATE TABLE IF NOT EXISTS Produto (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS FoneRestaurante (
-	idRestaurante  INT		NOT NULL,
-	telefone	 CHAR(11)	NOT NULL,
+	idRestaurante  	INT		NOT NULL,
+	telefone	 	CHAR(11)	NOT NULL,
 	PRIMARY KEY (idRestaurante, telefone),
 	INDEX fk_FoneRestaurante_Restaurante_idx (idRestaurante ASC) VISIBLE,
 	CONSTRAINT fk_FoneRestaurante_Restaurante
@@ -145,9 +149,9 @@ CREATE TABLE IF NOT EXISTS FoneRestaurante (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS Categoria (
-	idCategoria	  INT		   	NOT NULL AUTO_INCREMENT,
-	nomeCategoria VARCHAR(30)  	NOT NULL,
-	descricao	  VARCHAR(100) 	NULL,
+	idCategoria	  	INT		   	NOT NULL AUTO_INCREMENT,
+	nomeCategoria 		VARCHAR(30)  	NOT NULL,
+	descricao	  	VARCHAR(100) 	NULL,
 	PRIMARY KEY (idCategoria),
 	UNIQUE INDEX nomeCategoria_UNIQUE (nomeCategoria ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -189,7 +193,6 @@ CREATE TABLE IF NOT EXISTS Composto_por (
 		ON DELETE CASCADE
 		ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
 CREATE TABLE IF NOT EXISTS Classificado_em (
 	idCategoria 	INT NOT NULL,
 	idProduto   	INT NOT NULL,
@@ -208,9 +211,3 @@ CREATE TABLE IF NOT EXISTS Classificado_em (
 		ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO Restaurante (cnpjRestaurante, nomeRestaurante, logradouro, cidade, estado, cep, numero, bairro, complemento) VALUES
-('12345678000199', 'Pizzaria Bella Napoli', 'Rua dos Sabores', 'Belo Horizonte', 'MG', '30150000', 450, 'Savassi', NULL),
-('98765432000188', 'Burguer Craft', 'Av. dos Lanches', 'Vitória', 'ES', '29050000', 22, 'Jardim da Penha', 'Loja A'),
-('45678912000177', 'Sushi House', 'Rua do Oriente', 'Belo Horizonte', 'MG', '31300000', 888, 'Castelo', NULL),
-('32165498000166', 'Cantina da Nonna', 'Rua Itália', 'Nanuque', 'MG', '39860000', 75, 'Centro', NULL),
-('78912345000155', 'Sabor Caseiro', 'Av. Principal', 'Montanha', 'ES', '29890000', 500, 'Centro', 'Shopping');
