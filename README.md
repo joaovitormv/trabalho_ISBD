@@ -12,3 +12,4 @@ Acesse o sistema abrindo o seu navegador e navegando até o endereço:
 🌐 http://localhost:8000
 
 ⚠️ Nota Importante: Certifique-se de que o seu terminal está aberto exatamente na pasta raiz do projeto antes de rodar o comando PHP.
+
