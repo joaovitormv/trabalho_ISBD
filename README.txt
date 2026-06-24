@@ -1,12 +1,14 @@
-## Como executar
+## 🚀 Como Executar o Projeto
 
-Inicie o servidor de desenvolvimento:
+Siga os passos abaixo para iniciar o servidor local de desenvolvimento:
+
+1. **Acesse a pasta do projeto** via terminal.
+2. **Inicie o servidor nativo do PHP** executando o comando abaixo:
 
 ```bash
 php -S localhost:8000
+Acesse o sistema abrindo o seu navegador e navegando até o endereço:
 
-Após a execução, acesse:
+🌐 http://localhost:8000
 
-http://localhost:8000
-
-*Certifique-se de que está na pasta correta
+⚠️ Nota Importante: Certifique-se de que o seu terminal está aberto exatamente na pasta raiz do projeto antes de rodar o comando PHP.
